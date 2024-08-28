@@ -1,14 +1,18 @@
 import fs from 'fs'
-import {txtUrl} from './index.js'
-// const txtUrl=process.cwd()+'/test/test.txt'
+ const txtUrl='../test.txt'
 
 const txtContent = fs.readFileSync(txtUrl, 'utf-8')
 const buf = fs.readFileSync(txtUrl)
 
+console.log('文件内容',txtContent)
 // 打印Buffer大小
 console.log(buf.length)
-// 修改前2个字符
+
+/**
+ * 输出修改后的内容
+ * @type {string}
+ */
 buf.write('gg')
 
 // 输出修改后的内容
-console.log(buf.toString())
+console.log('修改后内容',buf.toString())

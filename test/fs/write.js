@@ -1,19 +1,23 @@
 import fs from 'fs'
-import {txtUrl} from './index.js'
-const imgUrl=process.cwd()+'/test/logo.jpeg'
-// fs.writeFileSync(txtUrl, '123hello world')
+const txtUrl='../test.txt'
+const imgUrl='../logo.jpeg'
+fs.writeFileSync(txtUrl, 'bye bye world')
+
+
 // 读取一个图片
 const imgBuf = fs.readFileSync(imgUrl)
 
-console.log(111,fs.statSync(imgUrl))
+console.log('readImage',fs.statSync(imgUrl))
 const fileInfo = fs.statSync(imgUrl)
 // 判断是文件还是目录
-console.log(1,fileInfo.isFile(),2, fileInfo.isDirectory())
+console.log('是否是文件',fileInfo.isFile(),'是否是目录', fileInfo.isDirectory())
+
+
 try {
   // 查询一个不存在的文件/目录信息（会抛出异常，需要自行捕获）
   fs.statSync('not_exist.txt')
 } catch (e) {
-  console.log('文件不存在',e)
+  console.log('文件不存在')
 }
 process.exit()
 // console.log('isBuffer', Buffer.isBuffer(imgBuf), 'bufferSize', imgBuf.length)
